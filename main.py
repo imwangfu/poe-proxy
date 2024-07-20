@@ -80,6 +80,7 @@ async def stream_response(poe_messages, chat_request):
     # 直接使用传入的 model 作为 bot_name
     bot_name = chat_request.model
     full_response = ""
+    print('start get_bot_response')
     async for partial in fp.get_bot_response(messages=poe_messages, bot_name=bot_name, api_key=POE_API_KEY):
         if hasattr(partial, 'text'):
             chunk = partial.text
